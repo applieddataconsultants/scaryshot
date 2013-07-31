@@ -1,6 +1,6 @@
 {
   "name": "scaryshot",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Phantom.js screenshot service",
   "main": "scaryshot.js",
   "author": "Marc Harter <wavded@gmail.com> (wavded.com)",
