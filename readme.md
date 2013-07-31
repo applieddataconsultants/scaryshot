@@ -2,6 +2,8 @@
 
 Phantom.js screenshot web service
 
+[![NPM](https://nodei.co/npm/scaryshot.png?downloads=true)](https://nodei.co/npm/scaryshot)
+
 # Setup
 
 Requires that you have [phantom.js](http://phantomjs.org/) binary in your PATH.
