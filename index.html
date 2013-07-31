@@ -1,0 +1,50 @@
+<!doctype html>
+<title>Scaryshot</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css" rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=Finger+Paint' rel='stylesheet' type='text/css'>
+
+<div class='container'>
+  <h1 style='font-family: "Finger Paint"'>Scaryshot</h1>
+  <em>PhantomJS Screen Shot Generator</em>
+  <br><br>
+  <form class='form form-horizontal' action='/generate'>
+    <fieldset>
+      <legend>GET /generate</legend>
+      <p>Defaults to Letter (portrait) for PDF, and size of webpage contents for other formats.</p>
+      <br>
+      <div class='form-group'>
+        <label class='col-lg-2 control-label'>url</label>
+        <div class='col-lg-10'>
+          <input required class='form-control' name='url' type='text'>
+        </div>
+      </div>
+      <div class='form-group'>
+        <label class='col-lg-2 control-label'>name</label>
+        <div class='col-lg-10'>
+          <input class='form-control' name='name' type='text'>
+        </div>
+      </div>
+      <div class='form-group'>
+        <label class='col-lg-2 control-label'>type</label>
+        <div class='col-lg-10'>
+          <select class='form-control' name='type'>
+            <option></option>
+            <option>pdf</option>
+            <option>png</option>
+            <option>jpeg</option>
+            <option>gif</option>
+          </select>
+        </div>
+      </div>
+      <div class='form-group'>
+        <label class='col-lg-2 control-label'>delay</label>
+        <div class='col-lg-10'>
+          <input class='form-control' name='delay' type='text'>
+          <br>
+          <button type='submit' class='btn btn-primary'>Generate</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>
