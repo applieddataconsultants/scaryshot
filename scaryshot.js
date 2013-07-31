@@ -41,7 +41,7 @@ function make (opts, res) {
     PHANTOM_TMP_NAME: path,
     PHANTOM_DELAY: opts.delay || 0
   }
-  cp.exec('phantomjs render.js', { env: env, timeout: 30000 }, function (er, stdout, sterr) {
+  cp.exec('phantomjs '+__dirname+'/render.js', { env: env, timeout: 30000 }, function (er, stdout, sterr) {
     if (er) {
       console.error(er)
       return error('Unable to render webpage')
