@@ -7,7 +7,7 @@ page.settings.localToRemoteUrlAccessEnabled = true
 if (type == 'pdf')
   page.paperSize = { format: 'Letter', orientation: 'portrait', border: '1cm' }
 
-function render () {
+page.onLoadFinished = function () {
   setTimeout(function () {
     page.render(env.PHANTOM_TMP_NAME)
     phantom.exit()
@@ -16,10 +16,8 @@ function render () {
 
 if (env.PHANTOM_URL) {
   console.log('rendering - ', env.PHANTOM_URL)
-  page.open(env.PHANTOM_URL, render)
+  page.open(env.PHANTOM_URL)
 } else {
   console.log('rendering - ', env.PHANTOM_HTML)
-  page.content = env.PHANTOM_HTML
-  if (env.PHANTOM_HTML.match(/http/)) setTimeout(render, 2000) // assumed content has ext. resources -> crude way to load requests until we have an event triggered after all resources have been loaded
-  else render()
+  page.setContent(env.PHANTOM_HTML, 'http://localhost')
 }

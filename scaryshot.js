@@ -82,4 +82,5 @@ http.createServer(function (req, res) {
     }
   }
 }).listen(port)
+
 console.log('Scaryshot listening on port', port)
