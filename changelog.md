@@ -1,4 +1,12 @@
 
+0.0.3 / 2013-08-05 
+==================
+
+ * fixed; os.tmpdir may not always have / at end
+ * added; logo
+ * added; license text
+ * added; forkme
+
 0.0.2 / 2013-08-01 
 ==================
 
