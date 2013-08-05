@@ -8,7 +8,7 @@ var url = require('url')
 var qs = require('querystring')
 var port = process.argv[2] || 3000
 
-var tmpdir = os.tmpdir()
+var tmpdir = os.tmpdir() + '/'
 var tmpid = Date.now()
 var indexHtml = fs.readFileSync(__dirname+'/index.html').toString()
 
