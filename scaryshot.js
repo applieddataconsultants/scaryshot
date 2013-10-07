@@ -41,7 +41,9 @@ function make (opts, res) {
     PHANTOM_TYPE: type,
     PHANTOM_TMP_NAME: path,
     PHANTOM_HTML: opts.html,
-    PHANTOM_DELAY: opts.delay || 0
+    PHANTOM_DELAY: opts.delay || 0,
+    PHANTOM_HEADER: opts.header,
+    PHANTOM_FOOTER: opts.footer
   }
   cp.exec('phantomjs '+__dirname+'/render.js', { env: env, timeout: 30000 }, function (er, stdout, sterr) {
     console.log(stdout, sterr)
