@@ -21,6 +21,15 @@ scaryshot [port]
 
 Then visit the webpage in your browser for usage.
 
+# Current supported features
+
+* Formats (PDF, PNG, JPEG, GIF)
+* Headers and Footers (PDF only)
+* Delay
+* Raw HTML as input
+* URL as input
+* Output filename
+
 # License
 
 The MIT License (MIT)
