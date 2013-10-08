@@ -36,7 +36,7 @@ function make (opts, res) {
 
   if (opts.url && !/^http/.test(opts.url)) opts.url = 'http://'+opts.url
 
-  var env = {
+  var env = JSON.stringify({
     PHANTOM_URL: opts.url || '',
     PHANTOM_TYPE: type,
     PHANTOM_TMP_NAME: path,
@@ -44,13 +44,19 @@ function make (opts, res) {
     PHANTOM_DELAY: opts.delay || 0,
     PHANTOM_HEADER: opts.header || '',
     PHANTOM_FOOTER: opts.footer || ''
-  }
-  cp.exec('phantomjs '+__dirname+'/render.js', { env: env, timeout: 30000 }, function (er, stdout, sterr) {
-    console.log(stdout, sterr)
-    if (er) {
-      console.error(er)
-      return error('Unable to render webpage')
-    }
+  })
+
+  var child = cp.spawn('phantomjs', [__dirname+'/render.js'], { stdio: [ 'pipe', process.stdout, process.stderr ] })
+  child.stdin.write(env)
+  child.stdin.end()
+
+  child.on('error', function (er) {
+    return error('Unable to render webpage')
+    child.kill()
+  })
+  child.on('exit', function () {
+    if (res.headersSent) return // sent an error
+
     res.writeHead(200, {
       'Content-Type': mimes[type],
       'Content-Disposition': 'attachment; filename='+name+'.'+type

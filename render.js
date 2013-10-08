@@ -1,5 +1,7 @@
-var env = require('system').env
 var page = require('webpage').create()
+var system = require('system')
+
+var env = JSON.parse(system.stdin.read())
 
 var type = env.PHANTOM_TYPE || 'pdf'
 var header = env.PHANTOM_HEADER || null
