@@ -1,4 +1,4 @@
-# Scaryshot
+# Scaryshot [![Build Status](https://travis-ci.org/applieddataconsultants/scaryshot.png?branch=master)](https://travis-ci.org/applieddataconsultants/scaryshot)
 
 Phantom.js screenshot web service
 
