@@ -4,11 +4,11 @@ Phantom.js screenshot web service
 
 ![scaryshot](https://raw.github.com/applieddataconsultants/scaryshot/master/scaryshot.png)
 
-# Setup
+## Setup
 
-Requires that you have [phantom.js](http://phantomjs.org/) binary in your PATH.
+Requires that you have the [phantom.js](http://phantomjs.org/) binary in your PATH.
 
-# Installation
+## Installation
 
 [![NPM](https://nodei.co/npm/scaryshot.png?downloads=true)](https://nodei.co/npm/scaryshot)
 
@@ -21,14 +21,13 @@ scaryshot [port]
 
 Then visit the webpage in your browser for usage.
 
-# Current supported features
+## Currently supported features
 
 * Formats (PDF, PNG, JPEG, GIF)
 * Headers and Footers (PDF only)
-* Delay
-* Raw HTML as input
-* URL as input
-* Output filename
+* Delayed Snapshots
+* Raw HTML or a URL as input
+* Custom output filename
 
 # License
 
