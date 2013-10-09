@@ -2,10 +2,12 @@ var request = require('supertest')
 var fs = require('fs')
 var assert = require('assert')
 var app = require('../')
-var sampleUrlWithProtocol = "http://www.downforeveryoneorjustme.com/"
-var sampleUrl = "www.downforeveryoneorjustme.com"
+var sampleUrlWithProtocol = "http://www.google.com/"
+var sampleUrl = "www.google.com"
 
 describe('/generate', function () {
+  this.timeout(4000)
+
   it('should fail if no url or html param supplied', function (done) {
     request(app)
       .get('/generate')
