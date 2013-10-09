@@ -6,7 +6,7 @@ var sampleUrlWithProtocol = "http://www.google.com/"
 var sampleUrl = "www.google.com"
 
 describe('/generate', function () {
-  this.timeout(4000)
+  this.timeout(8000)
 
   it('should fail if no url or html param supplied', function (done) {
     request(app)
