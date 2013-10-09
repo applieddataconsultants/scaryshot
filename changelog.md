@@ -1,4 +1,10 @@
 
+0.1.0 / 2013-10-08 
+==================
+
+ * add; test suite (travis integration)
+ * add; cleanup tmp files after generate
+
 0.0.6 / 2013-10-08 
 ==================
 
