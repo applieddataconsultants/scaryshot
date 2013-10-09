@@ -39,6 +39,6 @@ if (env.PHANTOM_URL) {
   console.log('rendering - ', env.PHANTOM_URL)
   page.open(env.PHANTOM_URL)
 } else {
-  console.log('rendering - ', env.PHANTOM_HTML)
+  console.log('rendering - ', env.PHANTOM_HTML.substring(0, 2000))
   page.setContent(env.PHANTOM_HTML, 'http://localhost')
 }

@@ -21,15 +21,15 @@ var mimes = {
 }
 
 function make (opts, res) {
-  function error (message) {
-    res.writeHead(200)
-    res.end(message)
+  function error (code, message) {
+    res.writeHead(code, { 'Content-Type': 'application/json' })
+    res.end(JSON.stringify({ status: code, message: message }))
   }
 
-  if (!opts || (!opts.url && !opts.html)) return error('The "url" or "html" parameter is required')
+  if (!opts || (!opts.url && !opts.html)) return error(400, 'The "url" or "html" parameter is required')
 
   var type = opts.type || 'pdf'
-  if (!mimes[type]) return error('Type "'+type+'" is not supported.  The following types are supported: '+Object.keys(mimes))
+  if (!mimes[type]) return error(400, 'Type "'+type+'" is not supported.  The following types are supported: '+Object.keys(mimes))
 
   var name = opts.name || 'output'
   var path = tmpdir+'phantom-'+(tmpid++)+'.'+type
@@ -51,7 +51,7 @@ function make (opts, res) {
   child.stdin.end()
 
   child.on('error', function (er) {
-    return error('Unable to render webpage')
+    return error(500, 'Unable to render webpage')
     child.kill()
   })
   child.on('exit', function () {
@@ -61,14 +61,21 @@ function make (opts, res) {
       'Content-Type': mimes[type],
       'Content-Disposition': 'attachment; filename='+name+'.'+type
     })
-    console.log(path)
-    fs.createReadStream(path).on('error', function (er) {
-      res.end()
-    }).pipe(res)
+    fs.createReadStream(path)
+      .on('error', function (er) {
+        res.end()
+      })
+      .on('end', function () {
+        fs.unlink(path, function (er) { // clean up tmp file
+          if (er) return console.error(er)
+          else console.log('unlinked', path)
+        })
+      })
+      .pipe(res)
   })
 }
 
-http.createServer(function (req, res) {
+var server = module.exports = http.createServer(function (req, res) {
   var parsed = url.parse(req.url, true)
   if (req.method == 'GET') return route(parsed.query)
 
@@ -89,6 +96,9 @@ http.createServer(function (req, res) {
         res.end(indexHtml)
     }
   }
-}).listen(port)
+})
 
-console.log('Scaryshot listening on port', port)
+if (!module.parent) {
+  server.listen(port)
+  console.log('Scaryshot listening on port', port)
+}
