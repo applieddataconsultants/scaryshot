@@ -1,4 +1,11 @@
 
+0.1.1 / 2014-05-30
+==================
+
+ * add; max timeout kill to phantomjs process
+ * add; preferGlobal flag
+ * fix; node 0.11 stream issue
+
 0.1.0 / 2013-10-08 
 ==================
 
