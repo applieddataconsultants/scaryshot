@@ -81,7 +81,7 @@ var server = module.exports = http.createServer(function (req, res) {
 
   var data = ''
   req.setEncoding('utf8')
-  req.on('readable', function () { data += req.read() })
+  req.on('data', function (chunk) { data += chunk })
   req.on('end', function () { route(qs.parse(data)) })
   req.on('error', console.error)
 
