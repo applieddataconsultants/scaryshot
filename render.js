@@ -35,6 +35,8 @@ page.onLoadFinished = function () {
   }, env.PHANTOM_DELAY)
 }
 
+setTimeout(function () { phantom.exit() }, 20000)
+
 if (env.PHANTOM_URL) {
   console.log('rendering - ', env.PHANTOM_URL)
   page.open(env.PHANTOM_URL)
