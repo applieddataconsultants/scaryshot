@@ -6,7 +6,7 @@ var sampleUrlWithProtocol = "http://www.google.com/"
 var sampleUrl = "www.google.com"
 
 describe('/generate', function () {
-  this.timeout(8000)
+  this.timeout(20000)
 
   it('should fail if no url or html param supplied', function (done) {
     request(app)
@@ -89,7 +89,6 @@ describe('/generate', function () {
       .expect(200, done)
   })
   it('should handle large html input', function (done) {
-    this.timeout(45000)
     request(app)
       .post('/generate')
       .type('form')
