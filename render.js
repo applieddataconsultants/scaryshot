@@ -6,13 +6,14 @@ var env = JSON.parse(system.stdin.read())
 var type = env.PHANTOM_TYPE || 'pdf'
 var header = env.PHANTOM_HEADER || null
 var footer = env.PHANTOM_FOOTER || null
+var orientation = env.PHANTOM_ORIENTATION || 'portrait'
 
 page.settings.localToRemoteUrlAccessEnabled = true
 
 if (type == 'pdf')
   page.paperSize = {
     format: 'Letter',
-    orientation: 'portrait',
+    orientation: orientation,
     border: '1cm',
     header: header && {
       height: "0.9cm",

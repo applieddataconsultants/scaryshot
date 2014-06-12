@@ -43,7 +43,8 @@ function make (opts, res) {
     PHANTOM_HTML: opts.html || '',
     PHANTOM_DELAY: opts.delay || 0,
     PHANTOM_HEADER: opts.header || '',
-    PHANTOM_FOOTER: opts.footer || ''
+    PHANTOM_FOOTER: opts.footer || '',
+    PHANTOM_ORIENTATION: opts.orientation || ''
   })
 
   var child = cp.spawn('phantomjs', [__dirname+'/render.js'], { stdio: [ 'pipe', process.stdout, process.stderr ] })
