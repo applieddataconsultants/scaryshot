@@ -15,27 +15,27 @@ if (type == 'pdf')
     format: 'Letter',
     orientation: orientation,
     header: header && {
-      height: "0.9cm",
+      height: '0.9cm',
       contents: phantom.callback(function(pageNum, numPages) {
         return header.replace(/{{page}}/g, pageNum).replace(/{{pages}}/g, numPages)
-      })
+      }),
     },
     footer: footer && {
-      height: "0.9cm",
+      height: '0.9cm',
       contents: phantom.callback(function(pageNum, numPages) {
         return footer.replace(/{{page}}/g, pageNum).replace(/{{pages}}/g, numPages)
-      })
-    }
+      }),
+    },
   }
 
-page.onLoadFinished = function () {
-  setTimeout(function () {
+page.onLoadFinished = function() {
+  setTimeout(function() {
     page.render(env.PHANTOM_TMP_NAME)
     phantom.exit()
   }, env.PHANTOM_DELAY)
 }
 
-setTimeout(function () { phantom.exit() }, 20000)
+setTimeout(function() { phantom.exit() }, 20000)
 
 if (env.PHANTOM_URL) {
   console.log('rendering - ', env.PHANTOM_URL)
