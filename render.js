@@ -14,7 +14,6 @@ if (type == 'pdf')
   page.paperSize = {
     format: 'Letter',
     orientation: orientation,
-    border: '1cm',
     header: header && {
       height: "0.9cm",
       contents: phantom.callback(function(pageNum, numPages) {
