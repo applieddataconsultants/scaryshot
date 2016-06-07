@@ -1,0 +1,6 @@
+{
+  "extends": ["adc"],
+  "globals": {
+    "phantom": true
+  }
+}
