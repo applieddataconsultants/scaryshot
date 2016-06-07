@@ -18,15 +18,15 @@
     "url": "git://github.com/applieddataconsultants/scaryshot.git"
   },
   "scripts": {
-    "test": "mocha test/*-test.js"
+    "test": "tape test/*-test.js"
   },
   "license": "MIT",
   "engines": {
     "node": ">=0.10"
   },
   "devDependencies": {
-    "mocha": "^1.20.0",
-    "supertest": "^0.13.0"
+    "supertest": "^0.13.0",
+    "tape": "^4.5.1"
   },
   "preferGlobal": true
 }
