@@ -7,17 +7,18 @@ var http = require('http')
 var url = require('url')
 var qs = require('querystring')
 var port = process.argv[2] || 3000
+var join = require('path').join
 
 var tmpdir = os.tmpdir() + '/'
 var tmpid = Date.now()
-var indexHtml = fs.readFileSync(__dirname + '/index.html').toString()
+var indexHtml = fs.readFileSync(join(__dirname, '/index.html')).toString()
 
 var mimes = {
-  'pdf': 'application/pdf',
-  'png': 'image/png',
-  'jpeg': 'image/jpeg',
-  'jpg': 'image/jpeg',
-  'gif': 'image/gif',
+  pdf: 'application/pdf',
+  png: 'image/png',
+  jpeg: 'image/jpeg',
+  jpg: 'image/jpeg',
+  gif: 'image/gif',
 }
 
 function error(res, code, message) {
@@ -57,7 +58,7 @@ function make(opts, res) {
   })
 
   var child = cp.spawn('phantomjs',
-    [__dirname + '/render.js'],
+    [join(__dirname, '/render.js')],
     {stdio: ['pipe', process.stdout, process.stderr]}
   )
 

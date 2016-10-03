@@ -19,7 +19,7 @@
   },
   "scripts": {
     "start": "./scaryshot.js",
-    "test": "tape test/*-test.js"
+    "test": "tape *_test.js"
   },
   "license": "MIT",
   "engines": {

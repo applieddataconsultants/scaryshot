@@ -1,9 +1,10 @@
 var request = require('supertest')
 var test = require('tape')
 var fs = require('fs')
-var app = require('../')
+var app = require('./')
 var sampleUrlWithProtocol = 'http://www.google.com/'
 var sampleUrl = 'www.google.com'
+var join = require('path').join
 
 function end(t) {
   return function(er) {
@@ -93,7 +94,7 @@ test('/generate', function(ts) {
     request(app)
       .post('/generate')
       .type('form')
-      .send({html: fs.readFileSync(__dirname + '/fixtures/large.html').toString(), type: 'png'})
+      .send({html: fs.readFileSync(join(__dirname, '/testdata/large.html')).toString(), type: 'png'})
       .expect('content-type', 'image/png')
       .expect(200, end(t))
   })
